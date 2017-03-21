@@ -1,42 +1,55 @@
 // Signo
 
-var radius, sw, looping, col, sides, pt;
-var s; // el signo
+// declaro variables "globales"
+var sides, radius, sw, looping, col, pt;
+
+var s; // es el objeto "signo"
 
 function setup() {
+	
+	// construyo el canvas
 	createCanvas(windowWidth, windowHeight);
-	// varibales
+	
+	// defino varibales
 	radius = width * .333;
 	sw = 5;
 	looping = true;
 	col = color(0);
 	sides = 9;
 	pt = [sides];
-	// los puntos
-	for (var i = 0; i < sides; i++) {
+	
+	// construyo el arreglo de los 9 puntos
+	for (var i = 0; i < pt.length; i++) {
 		var inc = TWO_PI / sides;
+		// son 9 puntos distribuidos en un círculo (identidad circular)
 		var xpos = cos(i * inc) * radius;
 		var ypos = sin(i * inc) * radius;
-		pt[i] = new Point(xpos, ypos);
+		pt[i] = new Point(xpos + width/2, ypos + height/2);
 	}
+
 	// construyo el signo
 	s = new Sign(width / 2, height * .38, radius);
+	// defino sus trazos únicos
 	s.defineLines();
 
+	// definiciones gráficas
 	strokeCap(ROUND);
 	background(255);
 }
 
 function draw() {
+
 	if (looping) {
 		fill(255, 35);
 		noStroke();
 		rect(0, 0, width, height);
 		s = new Sign(width / 2, height * .38, radius);
 		s.defineLines();
+		// dibujo el blanco
 		sw = 32;
 		col = color(0);
 		s.render();
+		// dibujo el negro
 		sw = 5;
 		col = color(255);
 		s.render();
@@ -53,10 +66,10 @@ function Point(x, y){
 	this.y = y;
 
 	this.getX = function(){
-		return x;
+		return this.x;
 	}
 	this.getY = function(){
-		return y;
+		return this.y;
 	}
 }
 
@@ -70,9 +83,9 @@ function Sign(x, y) {
 		var count = 0;
 		var start, end;
 		while (count < numLines) {
-			start = pt[round(random(sides))];
-			end = pt[round(random(sides))];
-			print(start + " - " + end);
+			start = pt[round(random(sides-1))];
+			end = pt[round(random(sides-1))];
+
 			if (start != end) {
 				l[count] = new Line(pt[start], pt[end]);
 				count++;
@@ -94,10 +107,12 @@ function Sign(x, y) {
 function Line(p1, p2) {
 	var cx1, cy1, cx2, cy2; // bezier control points
 	var iscurve;
-	this.x1 = p1.x;
-	this.x2 = p2.x;
-	this.y1 = p1.y;
-	this.y2 = p2.y;
+
+	// tomos las coordenadas de los puntos (esto no resulta)
+	this.x1 = p1.getX();
+	this.x2 = p2.getX();
+	this.y1 = p1.getY();
+	this.y2 = p2.getY();
 
 	if (random(1) > .5) { // curve-straight probability
 		this.iscurve = true;
