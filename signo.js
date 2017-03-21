@@ -70,8 +70,8 @@ function Sign(x, y) {
 		var count = 0;
 		var start, end;
 		while (count < numLines) {
-			start = pt[round(random(this.sides))];
-			end = pt[round(random(this.sides))];
+			start = pt[round(random(sides))];
+			end = pt[round(random(sides))];
 			print(start + " - " + end);
 			if (start != end) {
 				l[count] = new Line(pt[start], pt[end]);
@@ -92,12 +92,12 @@ function Sign(x, y) {
 }
 
 function Line(p1, p2) {
-	var cx1, cy1, cx2, cy2;
+	var cx1, cy1, cx2, cy2; // bezier control points
 	var iscurve;
-	this.x1 = p1.getX();
-	this.x2 = p2.getX();
-	this.y1 = p1.getY();
-	this.y2 = p2.getY();
+	this.x1 = p1.x;
+	this.x2 = p2.x;
+	this.y1 = p1.y;
+	this.y2 = p2.y;
 
 	if (random(1) > .5) { // curve-straight probability
 		this.iscurve = true;
