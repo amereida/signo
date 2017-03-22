@@ -1,4 +1,4 @@
-var wordsSpanish = [
+var spanish = [
 	"alba",
 	"luz",
 	"piano",
@@ -21,7 +21,7 @@ var wordsSpanish = [
 	"palacio"
 ];
 
-var wordsGreek = [
+var greek = [
 	"Αυγή",
 	"Φως",
 	"Λίρα",
@@ -44,25 +44,48 @@ var wordsGreek = [
 	"Παλάτι"
 ];
 
-var wordsGerman =[
-"Dawn",
-"Light",
-"Piano",
-"Chronische",
-"Space",
-"Memory",
-"Maßnahmen",
-"Party",
-"Der Akt",
-"Extension",
-"Amerika",
-"Das Skript",
-"Nine",
-"Vererbung",
-"Piety",
-"Freemen",
-"Twilight",
-"Path",
-"Tower",
-"Palace"
-	];
+var german = [
+	"Dawn",
+	"Light",
+	"Piano",
+	"Chronische",
+	"Space",
+	"Memory",
+	"Maßnahmen",
+	"Party",
+	"Der Akt",
+	"Extension",
+	"Amerika",
+	"Das Skript",
+	"Nine",
+	"Vererbung",
+	"Piety",
+	"Freemen",
+	"Twilight",
+	"Path",
+	"Tower",
+	"Palace"
+];
+
+var english = [
+	"Sunrise",
+	"light",
+	"piano",
+	"chronicle",
+	"space",
+	"memory",
+	"measurements",
+	"Party",
+	"the act",
+	"the extension",
+	"America",
+	"the script",
+	"The nine",
+	"The inheritance",
+	"The piety",
+	"Free men",
+	"sunset",
+	"path",
+	"tower",
+	"palace"
+];

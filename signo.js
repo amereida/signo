@@ -1,3 +1,12 @@
+/*
+
+    cartas de la phalène  - documenta14
+    
+    amereida
+
+*/
+
+
 var pt;
 var sides;
 var radius;
@@ -5,8 +14,7 @@ var signo;
 var looping;
 var debugtext;
 var randomtext;
-
-var font;
+var font, fs;
 
 function preload() {
 	//font = loadFont("assets/OpenSans-Light.ttf");
@@ -21,11 +29,13 @@ function setup() {
 
 	if (width > height) {
 		radius = height / 3;
-			textFont(font, height / 18);
+		fs = height / 18;
 	} else {
 		radius = width / 3;
-			textFont(font, width / 18);
+		fs = width / 18;
 	}
+
+	textFont(font, fs);
 
 	for (var i = 0; i < 9; i++) {
 		var inc = TWO_PI / 9;
@@ -44,8 +54,8 @@ function setup() {
 function Signo(x, y) {
 	this.x = x;
 	this.y = y;
-	largo = round(random(3, 9));
-	var lin = [largo];
+	largo = round(random(3, 6));
+	var lin = [];
 	var count = 0;
 	var start, end;
 
@@ -65,7 +75,7 @@ function Signo(x, y) {
 	this.render = function() {
 		push();
 		translate(x, y);
-		for (var i = 0; i < largo; i++) {
+		for (var i = 0; i < lin.length; i++) {
 			lin[i].render();
 		}
 		pop();
@@ -109,13 +119,13 @@ function draw() {
 	noFill();
 	if (looping) {
 		signo = new Signo(width / 2, height / 3.5);
-		strokeWeight(7);
+		strokeWeight(4);
 		stroke(0);
 		signo.render();
-		strokeWeight(5);
+		strokeWeight(2);
 		stroke(255);
 		signo.render();
-		fill(255, 10);
+		fill(255, 66);
 		noStroke();
 		rect(0, 0, width, height);
 	} else {
@@ -131,25 +141,43 @@ function drawText() {
 	fill(0);
 	noStroke();
 	textAlign(CENTER);
-
-	text(wordsGreek[randomText], width / 2, height - 30);
-
 	push();
-	translate(width / 2, height * .66);
-	translate(-radius*1.3, 0);
+	translate(width / 2, height / 2);
+
+	// english - top (180º)
+	push();
+	translate(0, -height / 2 + fs);
+	rotate(PI);
+	text(english[randomText], 0, 0);
+	pop();
+
+	// spanish - bottom (0º)
+	push();
+	translate(0, height / 2 - fs);
+	text(spanish[randomText], 0, 0);
+	pop();
+
+	// greek - left (90º)
+	push();
+	translate(-width / 2 + fs, 0);
 	rotate(HALF_PI);
-	text(wordsGerman[randomText], 0, 0);
+	text(greek[randomText], 0, 0);
 	pop();
 
+	// german - right (-90º)
 	push();
-	translate(width / 2, height * .66);
-	translate(radius*1.3, 0);
+	translate(width / 2 - fs, 0);
 	rotate(-HALF_PI);
-	text(wordsSpanish[randomText], 0, 0);
+	text(german[randomText], 0, 0);
 	pop();
+	pop();
+
 }
 
 function mouseReleased() {
 	looping = !looping;
-	randomText = round(random(wordsSpanish.length - 1));
+	randomText = round(random(spanish.length - 1));
+	if (!looping) {
+		saveCanvas('myCanvas', 'jpg');
+	}
 }
