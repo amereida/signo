@@ -47,7 +47,7 @@ function setup() {
 		pt[i][0] = xpos;
 		pt[i][1] = ypos;
 	}
-	signo = new Signo(width / 2, height / 3.5);
+	signo = new Signo(width / 2, height / 3);
 	debugtext = "";
 }
 
@@ -118,7 +118,7 @@ function Linea(a, b) {
 function draw() {
 	noFill();
 	if (looping) {
-		signo = new Signo(width / 2, height / 3.5);
+		signo = new Signo(width / 2, height / 3);
 		strokeWeight(4);
 		stroke(0);
 		signo.render();
