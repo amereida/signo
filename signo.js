@@ -6,6 +6,13 @@ var looping;
 var debugtext;
 var randomtext;
 
+var font;
+
+function preload() {
+	//font = loadFont("assets/OpenSans-Light.ttf");
+	font = "Helvetica, Arial";
+}
+
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	sides = 9;
@@ -14,10 +21,10 @@ function setup() {
 
 	if (width > height) {
 		radius = height / 3;
-		textSize(height / 22);
+			textFont(font, height / 15);
 	} else {
 		radius = width / 3;
-		textSize(width / 22);
+			textFont(font, width / 15);
 	}
 
 	for (var i = 0; i < 9; i++) {
@@ -123,20 +130,19 @@ function draw() {
 function drawText() {
 	fill(0);
 	noStroke();
-	textFont("Georgia");
 	textAlign(CENTER);
-	
-	text(wordsGreek[randomText], width/2, height - 30);
+
+	text(wordsGreek[randomText], width / 2, height - 30);
 
 	push();
-	translate(width/2, height/2);
+	translate(width / 2, height / 2);
 	translate(-radius - 36, 0);
 	rotate(HALF_PI);
 	text(wordsGerman[randomText], 0, 0);
 	pop();
 
 	push();
-	translate(width/2, height/2);
+	translate(width / 2, height / 2);
 	translate(radius + 36, 0);
 	rotate(-HALF_PI);
 	text(wordsSpanish[randomText], 0, 0);
