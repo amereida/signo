@@ -23,6 +23,7 @@ function preload() {
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
+	frameRate(4);
 	sides = 9;
 	pt = [];
 	looping = true;
@@ -125,7 +126,7 @@ function draw() {
 		strokeWeight(2);
 		stroke(255);
 		signo.render();
-		fill(255, 66);
+		fill(255, 88);
 		noStroke();
 		rect(0, 0, width, height);
 	} else {
