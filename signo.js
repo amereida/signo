@@ -177,7 +177,8 @@ function drawText() {
 function mouseReleased() {
 	looping = !looping;
 	randomText = round(random(spanish.length - 1));
+	/*
 	if (!looping) {
 		saveCanvas('myCanvas', 'jpg');
-	}
+	}*/
 }
