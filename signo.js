@@ -136,14 +136,14 @@ function drawText() {
 
 	push();
 	translate(width / 2, height / 2);
-	translate(-radius - 46, 0);
+	translate(-radius*1.3, 0);
 	rotate(HALF_PI);
 	text(wordsGerman[randomText], 0, 0);
 	pop();
 
 	push();
 	translate(width / 2, height / 2);
-	translate(radius + 46, 0);
+	translate(radius*1.3, 0);
 	rotate(-HALF_PI);
 	text(wordsSpanish[randomText], 0, 0);
 	pop();
