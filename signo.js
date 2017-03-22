@@ -21,10 +21,10 @@ function setup() {
 
 	if (width > height) {
 		radius = height / 3;
-			textFont(font, height / 15);
+			textFont(font, height / 18);
 	} else {
 		radius = width / 3;
-			textFont(font, width / 15);
+			textFont(font, width / 18);
 	}
 
 	for (var i = 0; i < 9; i++) {
@@ -136,14 +136,14 @@ function drawText() {
 
 	push();
 	translate(width / 2, height / 2);
-	translate(-radius - 36, 0);
+	translate(-radius - 46, 0);
 	rotate(HALF_PI);
 	text(wordsGerman[randomText], 0, 0);
 	pop();
 
 	push();
 	translate(width / 2, height / 2);
-	translate(radius + 36, 0);
+	translate(radius + 46, 0);
 	rotate(-HALF_PI);
 	text(wordsSpanish[randomText], 0, 0);
 	pop();
