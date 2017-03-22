@@ -14,8 +14,10 @@ function setup() {
 
 	if (width > height) {
 		radius = height / 3;
+		textSize(height / 22);
 	} else {
 		radius = width / 3;
+		textSize(width / 22);
 	}
 
 	for (var i = 0; i < 9; i++) {
@@ -121,7 +123,6 @@ function draw() {
 function drawText() {
 	fill(0);
 	noStroke();
-	textSize(22);
 	textFont("Georgia");
 	textAlign(CENTER);
 	
