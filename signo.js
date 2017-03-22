@@ -3,14 +3,19 @@ var sides;
 var radius;
 var signo;
 var looping;
-var largo; // sólo para ver por qué me queda con 1 trazo el signo
+var debugtext;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	sides = 9;
 	pt = []; // el arreglo (fijo) de 'sides' puntos
-	radius = width / 3; // el radio del signo
-	looping = false;
+	looping = true;
+
+	if(width > height){
+		radius = height / 3;
+	}else{
+		radius = width / 3;
+	}
 
 	for (var i = 0; i < 9; i++) {
 		var inc = TWO_PI / 9;
@@ -23,6 +28,7 @@ function setup() {
 		pt[i][1] = ypos;
 	}
 	signo = new Signo(width / 2, height / 2.5);
+	debugtext = "";
 }
 
 function Signo(x, y) {
@@ -31,12 +37,12 @@ function Signo(x, y) {
 	var count = 0;
 	var start, end;
 
-	while (count < lin.length) {
+	debugText = "el signo tiene "+largo+" trazos";
+
+	while (count < largo) {
 
 		start = round(random(sides - 1));
 		end = round(random(sides - 1));
-
-		// print("start = " + start + "     end = " + end); // debuging
 
 		if (start != end) {
 			lin[count] = new Linea(start, end);
@@ -47,7 +53,7 @@ function Signo(x, y) {
 	this.render = function() {
 		push();
 		translate(x, y);
-		for (var i = 0; i < lin.length; i++) {
+		for (var i = 0; i < largo; i++) {
 			lin[i].render();
 		}
 		pop();
@@ -105,14 +111,16 @@ function draw() {
 		strokeWeight(5);
 		stroke(0);
 		signo.render();
+
+		fill(0);
+		noStroke();
+		textSize(24);
+		text(debugText, 20, height - 30);
 	}
+
+	
 }
 
 function mouseReleased() {
 	looping = !looping;
-
-	if (!looping) {
-		fill(0);
-		text(10, height - 30, "el signo tiene " + largo + " trazos");
-	}
 }
