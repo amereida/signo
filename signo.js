@@ -24,7 +24,7 @@ function preload() {
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	sides = 9;
-	pt = []; // el arreglo (fijo) de 'sides' puntos
+	pt = [];
 	looping = true;
 
 	if (width > height) {
@@ -40,7 +40,7 @@ function setup() {
 	for (var i = 0; i < 9; i++) {
 		var inc = TWO_PI / 9;
 
-		// son 9 puntos distribuidos en un círculo (identidad circular)
+		// 9 points (pt) distributed in circle (circular identity)
 		var xpos = cos(i * inc) * radius;
 		var ypos = sin(i * inc) * radius;
 		pt[i] = [];
