@@ -4,6 +4,7 @@ var radius;
 var signo;
 var looping;
 var debugtext;
+var randomtext;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
@@ -11,9 +12,9 @@ function setup() {
 	pt = []; // el arreglo (fijo) de 'sides' puntos
 	looping = true;
 
-	if(width > height){
+	if (width > height) {
 		radius = height / 3;
-	}else{
+	} else {
 		radius = width / 3;
 	}
 
@@ -32,12 +33,14 @@ function setup() {
 }
 
 function Signo(x, y) {
-	largo = round(random(6, 12));
+	this.x = x;
+	this.y = y;
+	largo = round(random(3, 9));
 	var lin = [largo];
 	var count = 0;
 	var start, end;
 
-	debugText = "el signo tiene "+largo+" trazos";
+	debugText = "el signo tiene " + largo + " trazos";
 
 	while (count < largo) {
 
@@ -111,16 +114,35 @@ function draw() {
 		strokeWeight(5);
 		stroke(0);
 		signo.render();
-
-		fill(0);
-		noStroke();
-		textSize(24);
-		text(debugText, 20, height - 30);
+		drawText();
 	}
+}
 
+function drawText() {
+	fill(0);
+	noStroke();
+	textSize(22);
+	textFont("Georgia");
+	textAlign(CENTER);
 	
+	text(wordsGreek[randomText], width/2, height - 30);
+
+	push();
+	translate(width/2, height/2);
+	translate(-radius - 36, 0);
+	rotate(HALF_PI);
+	text(wordsGerman[randomText], 0, 0);
+	pop();
+
+	push();
+	translate(width/2, height/2);
+	translate(radius + 36, 0);
+	rotate(-HALF_PI);
+	text(wordsSpanish[randomText], 0, 0);
+	pop();
 }
 
 function mouseReleased() {
 	looping = !looping;
+	randomText = round(random(wordsSpanish.length - 1));
 }
