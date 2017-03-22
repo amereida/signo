@@ -37,7 +37,7 @@ function setup() {
 		pt[i][0] = xpos;
 		pt[i][1] = ypos;
 	}
-	signo = new Signo(width / 2, height / 2.5);
+	signo = new Signo(width / 2, height / 3.5);
 	debugtext = "";
 }
 
@@ -108,7 +108,7 @@ function Linea(a, b) {
 function draw() {
 	noFill();
 	if (looping) {
-		signo = new Signo(width / 2, height / 2.5);
+		signo = new Signo(width / 2, height / 3.5);
 		strokeWeight(7);
 		stroke(0);
 		signo.render();
@@ -135,14 +135,14 @@ function drawText() {
 	text(wordsGreek[randomText], width / 2, height - 30);
 
 	push();
-	translate(width / 2, height / 2);
+	translate(width / 2, height * .66);
 	translate(-radius*1.3, 0);
 	rotate(HALF_PI);
 	text(wordsGerman[randomText], 0, 0);
 	pop();
 
 	push();
-	translate(width / 2, height / 2);
+	translate(width / 2, height * .66);
 	translate(radius*1.3, 0);
 	rotate(-HALF_PI);
 	text(wordsSpanish[randomText], 0, 0);
