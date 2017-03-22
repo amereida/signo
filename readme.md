@@ -2,7 +2,7 @@
 
 phalène card generator
 
-[http://amereida.github.io/signo](see your card)
+[see your card](http://amereida.github.io/signo)
 
-![assets/acto.jpg](act of the cards, march 2017 - open city)
+![act of the cards, march 2017 - open city](assets/acto.jpg)
 
