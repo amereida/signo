@@ -15,6 +15,7 @@ var looping;
 var debugtext;
 var randomtext;
 var font, fs;
+var rot;
 
 function preload() {
 	//font = loadFont("assets/OpenSans-Light.ttf");
@@ -23,10 +24,11 @@ function preload() {
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	frameRate(10);
+	//frameRate(10);
 	sides = 9;
 	pt = [];
 	looping = true;
+	rot = 0;
 
 	if (width > height) {
 		radius = height / 3;
@@ -76,6 +78,7 @@ function Signo(x, y) {
 	this.render = function() {
 		push();
 		translate(x, y);
+		rotate(rot);
 		for (var i = 0; i < lin.length; i++) {
 			lin[i].render();
 		}
@@ -120,15 +123,16 @@ function draw() {
 	noFill();
 	if (looping) {
 		signo = new Signo(width / 2, height / 3);
-		strokeWeight(4);
-		stroke(0);
+		strokeWeight(5);
+		stroke(0, 100);
 		signo.render();
 		strokeWeight(2);
 		stroke(255);
 		signo.render();
-		fill(255, 88);
+		fill(255, 20);
 		noStroke();
 		rect(0, 0, width, height);
+		rot += .002;
 	} else {
 		background(255);
 		strokeWeight(5);
