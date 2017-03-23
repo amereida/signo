@@ -23,7 +23,7 @@ function preload() {
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	frameRate(4);
+	frameRate(10);
 	sides = 9;
 	pt = [];
 	looping = true;

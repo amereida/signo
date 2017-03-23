@@ -1,6 +1,6 @@
 ## signo
 
-phalène card generator
+Simple phalène card generator.
 
 [see your card](http://amereida.github.io/signo)
 
