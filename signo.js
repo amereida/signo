@@ -1,6 +1,6 @@
 /*
 
-    cartas de la phalène  - documenta14
+    cartas de la phalène ~ documenta 14 ~ Atenas
     
     amereida
 
@@ -16,30 +16,22 @@ var debugtext;
 var randomtext;
 var font, fs;
 var rot;
+var portrait;
 
 function preload() {
-	//font = loadFont("assets/OpenSans-Light.ttf");
 	font = "Helvetica, Arial";
 }
 
-function setup() {
-	createCanvas(windowWidth, windowHeight);
-	frameRate(18);
-	sides = 9;
-	pt = [];
-	looping = true;
-	rot = 0;
-
+function orient(){
 	if (width > height) {
+		portarit = false;
 		radius = height / 3;
 		fs = height / 18;
 	} else {
+		portrait = true;
 		radius = width / 3;
 		fs = width / 18;
 	}
-
-	textFont(font, fs);
-
 	for (var i = 0; i < 9; i++) {
 		var inc = TWO_PI / 9;
 
@@ -50,7 +42,29 @@ function setup() {
 		pt[i][0] = xpos;
 		pt[i][1] = ypos;
 	}
-	signo = new Signo(width / 2, height / 3);
+}
+
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+	orient();
+	background(255);
+	strokeWeight(2);
+	stroke(0);
+	signo.render();
+	drawText();
+}
+
+function setup() {
+	var carta = createCanvas(windowWidth, windowHeight);
+	carta.parent('card');
+	frameRate(18);
+	sides = 9;
+	pt = [];
+	looping = true;
+	rot = 0;
+	orient();
+	textFont(font, fs);
+	signo = new Signo(width / 2, height / 2);
 	debugtext = "";
 }
 
@@ -122,11 +136,11 @@ function Linea(a, b) {
 function draw() {
 	noFill();
 	if (looping) {
-		signo = new Signo(width / 2, height / 3);
+		signo = new Signo(width / 2, height / 2);
 		strokeWeight(5);
-		stroke(0, 100);
+		stroke(0, 50);
 		signo.render();
-		strokeWeight(2);
+		strokeWeight(1);
 		stroke(255);
 		signo.render();
 		fill(255, 20);
@@ -135,7 +149,7 @@ function draw() {
 		rot += .002;
 	} else {
 		background(255);
-		strokeWeight(5);
+		strokeWeight(2);
 		stroke(0);
 		signo.render();
 		drawText();
