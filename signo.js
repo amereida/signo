@@ -47,7 +47,7 @@ function orient(){
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 	orient();
-	background(255);
+	background(0);
 	strokeWeight(2);
 	stroke(0);
 	signo.render();
@@ -64,7 +64,11 @@ function setup() {
 	rot = 0;
 	orient();
 	textFont(font, fs);
-	signo = new Signo(width / 2, height / 2);
+	if(portrait){
+		signo = new Signo(width / 2, height / 3);
+	} else {
+		signo = new Signo(width / 2, height / 2);
+	}
 	debugtext = "";
 }
 
@@ -136,28 +140,32 @@ function Linea(a, b) {
 function draw() {
 	noFill();
 	if (looping) {
-		signo = new Signo(width / 2, height / 2);
+		if(portrait){
+			signo = new Signo(width / 2, height / 3);
+		}else{
+			signo = new Signo(width / 2, height / 2);
+		}
 		strokeWeight(5);
-		stroke(0, 50);
+		stroke(255, 50);
 		signo.render();
 		strokeWeight(1);
 		stroke(255);
 		signo.render();
-		fill(255, 20);
+		fill(0, 20);
 		noStroke();
 		rect(0, 0, width, height);
 		rot += .002;
 	} else {
-		background(255);
+		background(0);
 		strokeWeight(2);
-		stroke(0);
+		stroke(255);
 		signo.render();
 		drawText();
 	}
 }
 
 function drawText() {
-	fill(0);
+	fill(255);
 	noStroke();
 	textAlign(CENTER);
 	push();
